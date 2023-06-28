@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "smigtech" {
-  bucket = "smigtech_bucket"
+  bucket = "smigtech"
 
   tags = {
     Name        = "smigtech"
@@ -19,14 +19,14 @@ resource "aws_s3_bucket_website_configuration" "cloud_resume" {
   }
 }
 
-resource "aws_s3_bucket_controls" "smigtech_bucket" {
+resource "aws_s3_bucket_ownership_controls" "smigtech_bucket" {
   bucket = aws_s3_bucket.smigtech.id
   rule {
     object_ownership = "BucketOwnerPreferred"
   }
 }
 
-resource "aws_s3_bucket_controls" "smigtech_bucket" {
+resource "aws_s3_bucket_acl" "smigtech_bucket" {
   depends_on = [aws_s3_bucket_ownership_controls.smigtech_bucket]
   bucket     = aws_s3_bucket.smigtech.id
   acl        = "private"

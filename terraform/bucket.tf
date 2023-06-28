@@ -39,3 +39,30 @@ resource "aws_s3_bucket_versioning" "smigtech_versioning" {
   }
 }
 
+# resource "aws_s3_bucket_policy" "smigtech_policy" {
+#   bucket = aws_s3_bucket.smigtech.id
+#   policy = data.aws_iam_policy_document.read_smigtech_bucket.json
+# }
+#
+# data "aws_iam_policy_document" "read_smigtech_bucket" {
+#   statement {
+#     actions   = ["s3:GetObject"]
+#     resources = ["${aws_s3_bucket.smigtech.arn}/*"]
+#
+#     principals {
+#       type        = "AWS"
+#       identifiers = [aws_cloudfront_origin_access_identity.smigtech.iam_arn]
+#     }
+#   }
+#
+#   statement {
+#     actions   = ["s3:ListBucket"]
+#     resources = [aws_s3_bucket.smigtech.arn]
+#
+#     principals {
+#       type        = "AWS"
+#       identifiers = [aws_cloudfront_origin_access_identity.smigtech.iam_arn]
+#     }
+#   }
+# }
+#

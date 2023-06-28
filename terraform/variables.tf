@@ -3,3 +3,4 @@ variable "region" {
 }
 variable "secret_key" {}
 variable "access_key" {}
+variable "cert_arm" {}
